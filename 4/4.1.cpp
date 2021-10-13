@@ -15,7 +15,7 @@ int main()
 		if ((m[i] > 0 && m[i - 1] > 0) || (m[i] < 0 && m[i - 1] < 0)) {
 
 
-			cout << endl << m[i] << endl << "999" << endl << m[i - 1] << endl;
+			cout << endl << m[i - 1] << endl << "999" << endl << m[i] << endl;
 		}
 	}
 
