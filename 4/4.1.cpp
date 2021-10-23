@@ -1,4 +1,4 @@
-﻿#include "iostream"
+#include "iostream"
 using namespace std;
 
 int main()
@@ -11,18 +11,13 @@ int main()
 	{
 		cin >> m[i];
 	}
-	for (int i = 1; i < n; i++) {
-		if ((m[i] > 0 && m[i - 1] > 0) || (m[i] < 0 && m[i - 1] < 0)) {
-
-
-			cout << endl << m[i - 1] << endl << "999" << endl << m[i] << endl;
+	for (int i = 0; i < n; i++) {
+		cout << m[i] << endl;
+		if ((m[i] > 0 && m[i + 1] > 0) || (m[i] < 0 && m[i + 1] < 0)) {
+			cout << 999 << endl;
 		}
 	}
 
+
 	return 0;
 }
-
-
-
-
-
