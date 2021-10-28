@@ -1,4 +1,4 @@
-﻿#include "iostream"
+#include "iostream"
 using namespace std;
 
 int main()
@@ -12,7 +12,9 @@ int main()
 	for (int i = 0; i < n; i++)
 	{
 		cin >> m[i];
-
+	}	
+    for (int i = 0; i < n; i++)
+    {
 		if (i % 2 != 0)
 		{
 			sum2 = sum2 + m[i];
@@ -21,7 +23,7 @@ int main()
 			sum1 = sum1 + m[i];
 		}
 	}
-	k = sum2 - sum1;
+	k = sum1 - sum2;
 	cout << "difference of even numbers is " << k;
 	return 0;
 }
