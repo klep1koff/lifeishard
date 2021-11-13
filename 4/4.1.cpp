@@ -14,4 +14,3 @@ int main()
             cout << m[i] << ",";
         }
     return 0;
-}
