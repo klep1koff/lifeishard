@@ -4,11 +4,8 @@ using namespace std;
 int
 main()
 {
-	int sum1 = 0;
-	int sum2 = 0;
-	int sum3 = 0;
-
 	int a[3] = { 1, 8, 3 };
+	int sum1 = 0;
 	int m = sizeof(a) / sizeof(a[0]);
 	for (int i = 0; i < m; i++)
 	{
@@ -26,6 +23,7 @@ main()
 
 
 	int b[3] = { 1, 2, 3 };
+	int sum2 = 0;
 	int n = sizeof(b) / sizeof(b[0]);
 	for (int i = 0; i < n; i++)
 	{
@@ -43,6 +41,7 @@ main()
 
 
 	int c[3] = { 1, 2, 3 };
+	int sum3 = 0;
 	int k = sizeof(c) / sizeof(c[0]);
 	for (int i = 0; i < k; i++)
 	{
