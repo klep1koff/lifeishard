@@ -74,3 +74,35 @@ main()
 	*/
 
 }
+
+
+/*#include"iostream"
+using namespace std;
+int
+main ()
+{
+  int n, m;
+  cout << "Enter number of lines : "; // i //
+  cin >> n;
+  cout << "Enter number of columns : "; // j //
+  cin >> m;
+  int a[n][m];
+  cout << "Enter elements of array : " << endl;
+  for (int i = 0; i < n; i++) 
+    {
+      for (int j = 0; j < m; j++)
+ {
+   cout << "element [" << i+1 << "][" << j+1 << "] = ";
+   cin >> a[i][j];
+ }
+    }
+  cout << "array :" << endl;
+  for (int i = 0; i < n; i++)
+    {
+      for (int j = 0; j < m; j++)
+ cout << a[i][j] << " ";
+      cout << endl;
+    }
+  return 0;
+}
+*/
