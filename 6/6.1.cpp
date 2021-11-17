@@ -1,41 +1,30 @@
-﻿#include <iostream>   
-#include <algorithm>   
+#include<iostream>
 using namespace std;
-int main()
+int main ()
 {
-	int m[3] = { 1, -1, 3 };
-	int min1 = m[0];
-	for (int i = 0; i < 3; ++i)
+  int a[3][3], m;
+  for (int i = 0; i < 3; i++)
+    {
+      for (int j = 0; j < 3; j++)
 	{
-		if (m[i] < min1)
-		{
-			min1 = m[i];
-		}
-
+	  cout << "element [" << i + 1 << "][" << j + 1 << "] = ";
+	  cin >> a[i][j];
 	}
-	cout << min1 << "  ";
+    }
+  cout << endl;
 
-	int n[3] = { 1, 3, 0 };
-	int min2 = n[0];
-	for (int i = 0; i < 3; ++i)
-	{
-		if (n[i] < min2)
-		{
-			min2 = n[i];
-		}
 
-	}
-	cout << min2 << "  ";
-
-	int k[3] = { 10, 1, 9 };
-	int min3 = k[0];
-	for (int i = 0; i < 3; ++i)
-	{
-		if (k[i] < min3)
-		{
-			min3 = k[i];
-		}
-
-	}
-	cout << min3 << "  ";
+  for (int i = 0; i < 3; i++)
+    {
+      int min = a[i][0];
+      for (int j = 1; j < 3; j++)
+	if (a[i][j] <= min)
+	  {
+	    min = a[i][j];
+	    m = j + 1;
+	  }
+      cout << "min " << min << " ";
+      m = 0;
+    }
+  return 0;
 }
