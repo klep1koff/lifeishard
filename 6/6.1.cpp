@@ -2,6 +2,7 @@
 using namespace std;
 int main ()
 {
+  cout << "enter elements of array "<< endl;	
   int a[3][3], m;
   for (int i = 0; i < 3; i++)
     {
