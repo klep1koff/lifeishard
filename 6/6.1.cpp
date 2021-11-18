@@ -17,6 +17,7 @@ int main ()
 
   for (int i = 0; i < 3; i++)
     {
+      int b[i];
       int min = a[i][0];
       for (int j = 1; j < 3; j++)
 	if (a[i][j] <= min)
