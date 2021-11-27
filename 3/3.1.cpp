@@ -3,9 +3,7 @@ using namespace std;
 
 int main()
 {
-	int m[1000], n, sum1, sum2, k;
-	sum1 = 0;
-	sum2 = 0;
+	int m[1000], n, sum1 = 0, sum2 = 0, k;
 	cout << "enter amount of numbers ";
 	cin >> n;
 	cout << "enter elements of array " << endl;
