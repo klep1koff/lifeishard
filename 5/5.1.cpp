@@ -14,6 +14,7 @@ main ()
 	  cin >> a[i][j];
 	    }
     }
+   cout << endl;
    
 	    sum1 = 0;
 	    sum2 = 0;
@@ -33,16 +34,16 @@ main ()
                 {
                     sum3 += a[2][j];
                 }    
-        cout << "summ 1 = "  <<  sum1 << " summ 2 = "  <<  sum2<< " summ 2 =  "  <<  sum3 << endl; 
+        cout << "summ 1 = "  <<  sum1 << " ; " << " summ 2 = "  <<  sum2 << " ; " << " summ 2 =  "  <<  sum3 << " ; " << endl; 
      
     if ((sum1>sum2) && (sum1>sum3))
-    cout << "max summ is : "<< sum1;
+    cout << endl << "max summ is : "<< sum1;
     
     if ((sum2>sum1) && (sum2>sum3))
-    cout << "max summ is : "<< sum2;
+    cout << endl << "max summ is : "<< sum2;
     
     if ((sum3>sum2) && (sum3>sum1))
-    cout << "max summ is : "<< sum3;
+    cout << endl << "max summ is : "<< sum3;
      
     cout << endl;
  return 0; 
