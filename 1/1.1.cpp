@@ -1,10 +1,7 @@
 #include <iostream>
+using namespace std;
 
- using namespace std;
-
- 
-int
-main ()
+int main ()
 { 
 int A, B, C;
   
@@ -16,12 +13,12 @@ cout << "enter C ";
 cin >> C;
   
 if (A < B && B < C)
-    {    
+ {    
 cout << "OK";
-}
-  else
-    {  
+ }
+else
+  {  
 cout << "NOT OK";
-}
+  }
 return 0;
 }
