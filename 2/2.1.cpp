@@ -8,7 +8,10 @@ int main()
 	cin >> n;
 	y = 1;
 	for (k = 1; k <= n; k++)
-	y = y * k;
+	{
+	  y = y * k;
+	}
+	
 	y = y * 2;
 	cout << "result " << y;
 
