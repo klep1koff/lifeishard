@@ -26,7 +26,6 @@ int main ()
 	  }
       b[i] = min;
       cout << "min " << b[i] << " ";
-      m = 0;
     }
   return 0;
 }
