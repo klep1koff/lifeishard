@@ -3,7 +3,7 @@ using namespace std;
 int main ()
 {
   cout << "enter elements of array "<< endl;	
-  int a[3][3], m;
+  int a[3][3];
   for (int i = 0; i < 3; i++)
     {
       for (int j = 0; j < 3; j++)
@@ -18,12 +18,11 @@ int main ()
     {
       int b[i];
       int min = a[i][0];
-      for (int j = 1; j < 3; j++)
+      for (int j = 0; j < 3; j++)
 	if (a[i][j] <= min)
 	  {
-	    min = a[i][j];
-	    m = j + 1;
-	  }
+	    min = a[i][j];  
+	}
       b[i] = min;
       cout << "min " << b[i] << " ";
     }
