@@ -19,7 +19,23 @@ int main()
         }
         cout << endl << endl;
     }
-
+/*#include<iostream>
+using namespace std;
+int
+main ()
+{
+  int i , j, sum1, sum2, sum3;
+  
+  int a[3][3], m;
+    for (i = 0; i < 3; i++)
+    {
+      for (j = 0; j < 3; j++)
+	{
+	  cout << "element [" << i + 1 << "][" << j + 1 << "] = ";
+	  cin >> a[i][j];
+	    }
+    }
+   */ // part for report !!  
 
 
     for (j = 0; j < N; j += 1)
