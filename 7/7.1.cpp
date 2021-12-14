@@ -12,7 +12,7 @@ int main()
 	{
 		for (j = 0; j < N; j++)
 		{
-			matrix[i][j] = rand() % (10);
+			matrix[i][j] = rand() % (100);
 			cout << matrix[i][j] << " ";
 		}
 		cout << endl << endl;
