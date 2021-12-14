@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-	const int N = 3;
+	const int N = 4;
 	int  i, j, min;
 	int matrix[N][N];
 
