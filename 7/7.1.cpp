@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include <algorithm>
 using namespace std;
-#define N 4 
 int main()
 {
+	const int N = 3;
 	int  i, j, min;
 	int matrix[N][N];
 
