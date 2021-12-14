@@ -20,7 +20,7 @@ int main()
         cout << endl << endl;
     }
 	
-    for (j = 0; j < N; j += 1)
+    for (j = 0; j < N; j++)
     {
         sum = 0;
         for (i = 0; i < N; i++)
