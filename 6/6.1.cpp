@@ -24,7 +24,7 @@ int main ()
 	    min = a[i][j];  
 	}
       b[i] = min;
-      cout << "min " << b[i] << " ";
+      cout << "min " << i+1 << " line: " << b[i] << "; ";
     }
   return 0;
 }
