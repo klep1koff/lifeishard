@@ -5,7 +5,7 @@ int main()
 {
     const int N = 4;
     int matrix[N][N];
-    int i,j,k;
+    int i,j,k, temp;
     
     cout << "Original Matrix: " << endl;
     for (i = 0; i < N; i++)
@@ -24,7 +24,7 @@ int main()
             for (j = 0; j < N - i - 1; j++) {
                 if (matrix[j][k] > matrix[j + 1][k]) {
                     // меняем элементы местами
-                    int temp = matrix[j][k];
+                    temp = matrix[j][k];
                     matrix[j][k] = matrix[j + 1][k];
                     matrix[j + 1][k] = temp;
                 }
