@@ -1,6 +1,24 @@
 // 9 prog
-..
-	
+#include <iostream>
+#include <string> 
+using namespace std;
+int main()
+{
+    const string s = "artem stepan ilya artem stepan";
+    int k = s.find_last_of(' ');
+    string last_word = s.substr(++k),word;
+    int  first = 0, last = 0, word_size = 0;
+    while (first <= s.length()){
+        last = s.find(' ', first);
+        word_size = last - first;
+        word = s.substr(first, word_size);
+        first = s.find_first_not_of(' ', last);
+        if (!(word == last_word) && !(word.size() % 2))
+            std::cout << word << endl;
+ 
+    }
+	return 0;
+}
 
 // 10 prog
 
