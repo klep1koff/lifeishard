@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-    const string s = "artem stepan ilya artem stepan";
+    const string s = "biba boba aboba biba";
     int k = s.find_last_of(' ');
     string last_word = s.substr(++k),word;
     int  first = 0, last = 0, word_size = 0;
@@ -14,7 +14,7 @@ int main()
         word = s.substr(first, word_size);
         first = s.find_first_not_of(' ', last);
         if (!(word == last_word) && !(word.size() % 2))
-            std::cout << word << endl;
+            cout << word << endl;
  
     }
 	return 0;
