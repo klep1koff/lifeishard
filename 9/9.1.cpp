@@ -4,16 +4,16 @@
 using namespace std;
 int main()
 {
-    const string s = "biba boba aboba biba";
-    int k = s.find_last_of(' ');
-    string last_word = s.substr(++k),word;
-    int  first = 0, last = 0, word_size = 0;
-    while (first <= s.length()){
-        last = s.find(' ', first);
-        word_size = last - first;
-        word = s.substr(first, word_size);
-        first = s.find_first_not_of(' ', last);
-        if (!(word == last_word) && !(word.size() % 2))
+    const string a = "biba boba aboba biba";
+    int b = a.find_last_of(' ');
+    string last = a.substr(++b),word;
+    int  start = 0, finish = 0, size = 0;
+    while (start <= a.length()){
+        finish = a.find(' ', start);
+        size = finish - start;
+        word = a.substr(start, size);
+        start = a.find_first_not_of(' ', finish);
+        if (!(word == last) && !(word.size() % 2))
             cout << word << endl;
  
     }
