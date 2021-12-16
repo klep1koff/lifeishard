@@ -4,10 +4,12 @@
 using namespace std;
 int main()
 {
+    int  start = 0, finish = 0, size = 0;
+	
     const string a = "biba boba aboba biba";
     int b = a.find_last_of(' ');
     string last = a.substr(++b),word;
-    int  start = 0, finish = 0, size = 0;
+	
     while (start <= a.length()){
         finish = a.find(' ', start);
         size = finish - start;
