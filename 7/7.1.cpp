@@ -13,7 +13,7 @@ int main()
         for (j = 0; j < N; j++)
         {
             cout << "element [" << i + 1 << "][" << j + 1 << "] = ";
-	        cin >> matrix[i][j];
+	    cin >> matrix[i][j];
         }
         cout << endl;
     }
