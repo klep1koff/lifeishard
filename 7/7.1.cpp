@@ -12,8 +12,8 @@ int main()
     {
         for (j = 0; j < N; j++)
         {
-            matrix[i][j] = rand() % (100);
-            cout << matrix[i][j] << " ";
+            cout << "element [" << i + 1 << "][" << j + 1 << "] = ";
+	        cin >> matrix[i][j];
         }
         cout << endl;
     }
