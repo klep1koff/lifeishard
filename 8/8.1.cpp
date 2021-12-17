@@ -13,6 +13,12 @@ int main() {
 	temp = text;
 	temp = temp.erase(0, 1);
 	sravnenie = temp.size();
+	for (char check : temp) {
+        if (!isalpha(check)) {
+            cout << "The aftertext must'nt contain numbers" << endl;
+            return 0;
+        }
+    }
 	if (sravnenie == dig_int)
 	{
 		cout << "True";
