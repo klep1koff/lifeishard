@@ -5,7 +5,9 @@ using namespace std;
 int main() {
 	int sravnenie, dig_int;
 	string dig, temp;
-	string text = "9abobabiba";
+	string text;
+	cout << "enter text: ";
+	cin >> text;
 	dig = text[0];
 	dig_int = stoi(dig);
 	temp = text;
