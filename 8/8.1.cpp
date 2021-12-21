@@ -14,6 +14,11 @@ int main() {
 	temp = text;
 	temp = temp.erase(0, 1);
 	sravnenie = temp.size();
+	if (dig_int == 0) 
+	{
+	cout << "The text mustn't start from zero";
+	return 0;
+	}
 	for (char check : temp) {
         if (!isalpha(check)) {
             cout << "The aftertext mustn't contain numbers" << endl;
