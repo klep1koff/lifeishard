@@ -16,7 +16,7 @@ int main() {
 	sravnenie = temp.size();
 	if (dig_int == 0) 
 	{
-	cout << "The text mustn't start from zero";
+	cout << "The text mustn't start with zero digit ";
 	return 0;
 	}
 	for (char check : temp) {
