@@ -17,12 +17,12 @@ int main() {
 	if (dig_int == 0) 
 	{
 	cout << "The text mustn't start with zero digit ";
-	return 0;
+	return 1;
 	}
 	for (char check : temp) {
         if (!isalpha(check)) {
             cout << "The aftertext mustn't contain numbers" << endl;
-            return 0;
+            return 1;
         }
     }
 	if (sravnenie == dig_int)
