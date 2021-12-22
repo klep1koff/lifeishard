@@ -65,6 +65,14 @@ int main()
     string a;
     cout << "Enter text: ";
     cin >> a;
+        for (char check : a) {
+        if (!isalpha(check)) {
+            cout << "The text must not contain numbers" << endl;
+            return 1;
+           
+        }
+    }
+    
     for (int i = 0; i < a.length(); i++)
     {
         if (a.find_first_of(a[i]) == a.find_last_of(a[i]))
@@ -72,4 +80,5 @@ int main()
         else
             cout << "";
     }
+    return 0;
 }
