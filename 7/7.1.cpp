@@ -6,14 +6,25 @@ int main()
     const int N = 4;
     int matrix[N][N];
     int i,j,k, temp;
-    
-    cout << "Original Matrix: " << endl;
+
     for (i = 0; i < N; i++)
     {
         for (j = 0; j < N; j++)
         {
             cout << "element [" << i + 1 << "][" << j + 1 << "] = ";
 	    cin >> matrix[i][j];
+        }
+        cout << endl;
+    }
+    
+    
+    cout << "original Matrix:"<<endl; 
+    for (i = 0; i < N; i++)
+    {
+        for (j = 0; j < N; j++)
+        {
+ 
+            cout << matrix[i][j] << " ";
         }
         cout << endl;
     }
