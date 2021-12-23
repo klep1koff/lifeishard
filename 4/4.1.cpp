@@ -41,4 +41,5 @@ int main() {
         cout << array[i] << " ";
  
     cout << endl;
+    delete[] array;
 }
