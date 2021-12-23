@@ -6,6 +6,7 @@ int main() {
 	int sravnenie, dig_int;
 	string dig, temp;
 	string text;
+	bool f;
 	cout << "enter text: ";
 	cin >> text;
 	dig = text[0];
@@ -17,12 +18,12 @@ int main() {
 	if (dig_int == 0) 
 	{
 	cout << "The text mustn't start with zero digit ";
-	return 1;
+	exit (0);
 	}
 	for (char check : temp) {
         if (!isalpha(check)) {
             cout << "The aftertext mustn't contain numbers" << endl;
-            return 1;
+           exit (0);
         }
     }
 	if (sravnenie == dig_int)
