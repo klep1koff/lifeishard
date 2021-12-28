@@ -40,6 +40,6 @@ int main() {
     for(size_t i = 0; i < n; i++)
         cout << array[i] << " ";
  
-    cout << endl;
     delete[] array;
+    cout << endl;
 }
