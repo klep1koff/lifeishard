@@ -1,4 +1,5 @@
 // 9 prog
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,8 +21,9 @@ int main()
     }
     return 0;
 }
-// 10 prog
 
+
+// 10 prog
 
 #include <iostream>
 #include <string>
@@ -59,6 +61,8 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
+
 //2nd 10 prog 
 
 #include <iostream>
@@ -75,10 +79,6 @@ int main()
     for (char check : a) {
         if (isdigit(check)) {
             cout << "The text must not contain numbers" << endl;
-            exit(0);
-        }
-        else if (isspace(check)) {
-            cout << "The text must not contain spaces" << endl;
             exit(0);
         }
     }
