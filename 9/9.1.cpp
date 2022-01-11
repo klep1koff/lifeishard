@@ -22,63 +22,78 @@ int main()
 }
 // 10 prog
 
+
 #include <iostream>
 #include <string>
 #include <map>
- 
+#include <cctype>
+#include <algorithm>
+
+
 using namespace std;
  
 int main(int argc, char** argv) {
- 
+    
     string text;
     cout << "enter text: ";
-    cin >> text;
- 
+    getline(cin, text);
+    
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
     for (char check : text) {
         if (!isalpha(check)) {
             cout << "The text must not contain numbers" << endl;
-            return 0;
+            exit(0);
         }
     }
- 
+    
     map<char, int> mp;
- 
+    
     for (char ch : text)
         mp[ch] += 1;
- 
-    for (const auto& p : mp)
-        if (p.second == 1 )
-        {
+    
+    for (const auto &p : mp)
+        if (p.second == 1)
             cout << p.first;
-            cout << endl;
-        }
- 
+    cout << endl;
+    
+
     return 0;
 }
 //2nd 10 prog 
 
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <cctype>
 using namespace std;
 int main()
 {
     string a;
     cout << "Enter text: ";
-    cin >> a;
-        for (char check : a) {
-        if (!isalpha(check)) {
+    getline(cin, a);
+    transform(a.begin(), a.end(), a.begin(), ::tolower);
+    for (char check : a) {
+        if (isdigit(check)) {
             cout << "The text must not contain numbers" << endl;
-            return 1;
-           
+            exit(0);
+        }
+        else if (isspace(check)) {
+            cout << "The text must not contain spaces" << endl;
+            exit(0);
         }
     }
-    
+
     for (int i = 0; i < a.length(); i++)
     {
-        if (a.find_first_of(a[i]) == a.find_last_of(a[i]))
-            cout << a[i];
-        else
+        if (a.find_first_of(a[i]) == a.find_last_of(a[i])) {
+            cout << a[i] << endl;
+        }
+        else if (a.find_first_of(a[i]) != a.find_last_of(a[i])) {
             cout << "";
+        }
+        else {
+            cout << "";
+        }
     }
     return 0;
 }
