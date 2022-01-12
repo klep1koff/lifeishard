@@ -69,22 +69,23 @@ int main(int argc, char** argv) {
 #include <string>
 #include <algorithm>
 #include <cctype>
+
 using namespace std;
+
 int main()
 {
     string a;
     cout << "Enter text: ";
     getline(cin, a);
     transform(a.begin(), a.end(), a.begin(), ::tolower);
-    for (char check : a) {
-        if (isdigit(check)) {
-            cout << "The text must not contain numbers" << endl;
-            exit(0);
-        }
-    }
-
+    
     for (int i = 0; i < a.length(); i++)
     {
+        if (!isalpha(a[i]))
+        {
+            continue;
+        }
+
         if (a.find_first_of(a[i]) == a.find_last_of(a[i])) {
             cout << a[i] << endl;
         }
