@@ -1,3 +1,5 @@
+third prog
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,5 +22,40 @@ int main()
         }
         cout <<  word << endl;
         }
+    return 0;
+}
+
+
+second prog 
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
+
+using namespace std;
+
+int main()
+{
+    string a;
+    cout << "Enter text: ";
+    getline(cin, a);
+    
+    for (int i = 0; i < a.length(); i++)
+    {
+        //тут должна появиться штука, которая будет отделять слова от букв. 
+        //Проверка на количество букв в том числе через while (как вариант).
+        //понижайку регистров хз делать не
+        //и слова сделать в переменную word, на которую надо все снизу заменить
+        if (a.find_first_of(a[i]) == a.find_last_of(a[i])) {
+            cout << a[i] << endl;
+        }
+        else if (a.find_first_of(a[i]) != a.find_last_of(a[i])) {
+            cout << "";
+        }
+        else {
+            cout << "";
+        }
+    }
     return 0;
 }
