@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    int  start = 0, finish = 0, size = 0;
+    string a;
+    cout << "Enter text: ";
+    getline(cin, a);
+    int b = a.find_last_of(' ');
+    string last = a.substr(++b), word;
+    while (start <= a.length()) {
+        finish = a.find(' ', start);
+        size = finish - start;
+        word = a.substr(start, size);
+        start = a.find_first_not_of(' ', finish);
+        if (word == last)
+        {
+            // перенос последней буквы в начало слова
+        }
+        cout <<  word << endl;
+        }
+    return 0;
+}
