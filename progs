@@ -1,69 +1,4 @@
-third prog
-
-#include <iostream>
-#include <string>
-using namespace std;
-int main()
-{
-    int  start = 0, finish = 0, size = 0;
-    string a;
-    cout << "Enter text: ";
-    getline(cin, a);
-    int b = a.find_last_of(' ');
-    string last = a.substr(++b), word;
-    while (start <= a.length()) {
-        finish = a.find(' ', start);
-        size = finish - start;
-        word = a.substr(start, size);
-        start = a.find_first_not_of(' ', finish);
-        if (word == last)
-        {
-            // перенос последней буквы в начало слова
-        }
-        cout <<  word << endl;
-        }
-    return 0;
-}
-
-
-second prog 
-
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <cctype>
-
-using namespace std;
-
-int main()
-{
-    string a;
-    cout << "Enter text: ";
-    getline(cin, a);
-    
-    for (int i = 0; i < a.length(); i++)
-    {
-        //тут должна появиться штука, которая будет отделять слова от букв. 
-        //Проверка на количество букв в том числе через while (как вариант).
-        //понижайку регистров хз делать не
-        //и слова сделать в переменную word, на которую надо все снизу заменить
-        if (a.find_first_of(a[i]) == a.find_last_of(a[i])) {
-            cout << a[i] << endl;
-        }
-        else if (a.find_first_of(a[i]) != a.find_last_of(a[i])) {
-            cout << "";
-        }
-        else {
-            cout << "";
-        }
-    }
-    return 0;
-}
-
-
-
-
-1st prog
+second prog
 #include <iostream>
 #include <string>
 #include <vector>
@@ -121,12 +56,6 @@ int main()
   }
 
 }
-
-
-
-2nd prog
-
-
 
 3rd prog
 
@@ -195,78 +124,6 @@ int main() {
         }
     }
 }
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <string>
-using namespace std;
-string last_word(const string& str)
-{
-    if (str.empty())
-    {
-        cout << "No string\n";
-    }
- 
-    int i = str.length() - 1;
-    while (i >= 0 && str[i] != ' ')
-    {
-        i--;
-    }
-    string last_word;
-    for (int j = i + 1; j < str.length(); j++)
-    {
-        last_word += str[j];
-    }
-    return last_word;
-}
- 
-void SplitString(string s, vector<string>& v) {
- 
-    string temp = "";
-    for (int i = 0; i < s.length(); ++i) {
- 
-        if (s[i] == ' ') {
-            v.push_back(temp);
-            temp = "";
-        }
-        else {
-            temp.push_back(s[i]);
-        }
- 
-    }
-    v.push_back(temp);
- 
-}
- 
-void swapchar(string &a) {
-    swap(a.back(), a.front());
-}
- 
-int main() {
-    /*
-    Напечатать все слова, отличные от последнего слова, предварительно преобразовав каждое из них по следующему правилу:
-    перенести последнюю букву в начало слова.*/
- 
-    string str,lst;
-    vector<string> v;
-    cout << "enter text : \n";
-    getline(cin, str);
-    lst = last_word(str);
-    SplitString(str, v);
-    for (auto i : v) { 
-        swapchar(i);
-        if (i != lst){
-            cout << i << endl;
-        }
-    }
-}
-
-
-
-
-
-
-
 
 4th prog
 
@@ -317,4 +174,118 @@ int main() {
         file3 << arr3[i] << endl;
     }
  
+}
+
+
+fifth prog
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
+ 
+void fsort(vector <int>& numb) {
+    for (int i = 0; i < numb.size(); ++i) {
+        for (int j = 0; j < numb.size() - i - 1; ++j) {
+            if (numb[j] < numb[j + 1])
+                swap(numb[j + 1], numb[j]);
+        }
+    }
+}
+ 
+int main() {
+    int numb;
+    cout << "Choose the first if you want to take a ready-made, and the second if you want to create" << endl;
+    cin >> numb;
+ 
+    switch (numb)
+    {
+    case 1:
+        {
+        int s;
+        ifstream file;
+        ofstream file2;
+        ofstream file3;
+        vector <int> arr;
+        vector <int> arr2;
+        vector <int> arr3;
+        file.open("f1.txt");
+        file2.open("f2.txt");
+        file3.open("f3.txt");
+        for (file >> s; !file.eof(); file >> s)
+        {
+            if (s % 2 == 0) {
+                arr2.emplace_back(s);
+            }
+            else
+            {
+                arr3.emplace_back(s);
+            }
+        }
+ 
+        fsort(arr2);
+        fsort(arr3);
+ 
+        for (int i : arr2)
+        {
+            file2 << i << endl;
+        }
+        for (int i : arr3)
+        {
+            file3 << i << endl;
+        }
+ 
+        }
+    case 2:
+        {
+        string name;
+        ifstream file;
+        ofstream file2;
+        ofstream file3;
+        int s, size, num;
+        vector <int> arr;
+        vector <int> arr2;
+        vector <int> arr3;
+        cout << "enter file name" << endl;
+        cin >> name;
+        ofstream ost(name + ".txt");
+        file.open(name + ".txt");
+        file2.open("f2.txt");
+        file3.open("f3.txt");
+ 
+        cout << "Enter the set of numbers to be entered" << endl;
+ 
+        cin >> size;
+ 
+        for (int i = 0; i < size ; i++)
+        {
+            cin >> num;
+            arr.emplace_back(num);
+        }
+ 
+        for (file >> s; !file.eof(); file >> s)
+        {
+            if (s % 2 == 0) {
+                arr2.emplace_back(s);
+            }
+            else
+            {
+                arr3.emplace_back(s);
+            }
+        }
+ 
+        fsort(arr2);
+        fsort(arr3);
+ 
+        for (int i : arr2)
+        {
+            file2 << i << endl;
+        }
+        for (int i : arr3)
+        {
+            file3 << i << endl;
+        }
+ 
+        }
+    }
 }
