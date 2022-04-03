@@ -102,9 +102,11 @@ void SplitString(string s, vector<string>& v) {
  
 }
  
-void swapchar(string &a) {
-    swap(a.back(), a.front());
+void swapchar(string& a) {
+    a.insert(0, 1, a.back());
+    a.pop_back();
 }
+
  
 int main() {
     /*
@@ -124,6 +126,7 @@ int main() {
         }
     }
 }
+
 
 4th prog
 
