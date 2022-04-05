@@ -140,7 +140,7 @@ int main() {
 #include <vector>
 #include <fstream>
 using namespace std;
- 
+
 void fsort(vector <int>& numb) {
     for (int i = 0; i < numb.size(); ++i) {
         for (int j = 0; j < numb.size() - i - 1; ++j) {
@@ -149,16 +149,16 @@ void fsort(vector <int>& numb) {
         }
     }
 }
- 
+
 int main() {
     int numb;
     cout << "Choose the first if you want to take a ready-made, and the second if you want to create" << endl;
     cin >> numb;
- 
+
     switch (numb)
     {
     case 1:
-        {
+    {
         int s;
         ifstream file;
         ofstream file2;
@@ -179,10 +179,10 @@ int main() {
                 arr3.emplace_back(s);
             }
         }
- 
+
         fsort(arr2);
         fsort(arr3);
- 
+
         for (int i : arr2)
         {
             file2 << i << endl;
@@ -191,10 +191,13 @@ int main() {
         {
             file3 << i << endl;
         }
- 
-        }
+        file.close();
+        file2.close();
+        file3.close();
+
+    }
     case 2:
-        {
+    {
         string name;
         ifstream file;
         ofstream file2;
@@ -209,17 +212,17 @@ int main() {
         file.open(name + ".txt");
         file2.open("f2.txt");
         file3.open("f3.txt");
- 
+
         cout << "Enter the set of numbers to be entered" << endl;
- 
+
         cin >> size;
- 
-        for (int i = 0; i < size ; i++)
+
+        for (int i = 0; i < size; i++)
         {
             cin >> num;
             arr.emplace_back(num);
         }
- 
+
         for (file >> s; !file.eof(); file >> s)
         {
             if (s % 2 == 0) {
@@ -230,10 +233,10 @@ int main() {
                 arr3.emplace_back(s);
             }
         }
- 
+
         fsort(arr2);
         fsort(arr3);
- 
+
         for (int i : arr2)
         {
             file2 << i << endl;
@@ -242,9 +245,12 @@ int main() {
         {
             file3 << i << endl;
         }
- 
-        }
+        file.close();
+        file2.close();
+        file3.close();
+       }
     }
+    return 0;
 }
 
 
