@@ -316,4 +316,7 @@ int main()
     {
         file2 << i << endl;
     }
+    file.close();
+    file2.close();
+return 0;	
 }
