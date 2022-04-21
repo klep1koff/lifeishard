@@ -320,3 +320,131 @@ int main()
     file2.close();
 return 0;	
 }
+
+
+
+QT
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+ 
+#define PI 3.14159265358979323846
+#define DEG2RAD(x) ((float)(x) * (float)((float)(PI) / 180.0f))
+#define RAD2DEG(x) ((float)(x) * (float)(180.0f / (float)(PI)))
+ 
+struct point_t {
+    int x, y;
+    point_t operator-(point_t& other) {
+        return point_t(other.x - x, other.y - y);
+    }
+ 
+    float length() const {
+        return sqrt(x * x + y * y);
+    }
+};
+ 
+float get_angle(point_t v1, point_t v2, point_t v3) {
+    point_t a = v2 - v1, b = v2 - v3;
+    float ratio = a.x * b.x + a.y * b.y;
+    float degree = RAD2DEG(acos(ratio / (a.length() * b.length())));
+ 
+    return degree;
+}
+ 
+enum class e_types {
+    rect,
+    square,
+    rhombus,
+    trapezoid,
+    quad
+};
+ 
+bool is_square(point_t a, point_t b, point_t c, point_t d) {
+ 
+    float a1 = get_angle(a, b, c);
+    float a2 = get_angle(b, c, d);
+    float a3 = get_angle(c, d, a);
+    float a4 = get_angle(d, a, b);
+ 
+    if (std::abs(a1 - 90.f) <= FLT_EPSILON &&
+        std::abs(a2 - 90.f) <= FLT_EPSILON &&
+        std::abs(a3 - 90.f) <= FLT_EPSILON &&
+        std::abs(a4 - 90.f) <= FLT_EPSILON) {
+ 
+        float l1 = (a - b).length();
+        float l2 = (b - c).length();
+        float l3 = (c - d).length();
+        float l4 = (d - a).length();
+        if (std::abs(l1 - l2) <= FLT_EPSILON &&
+            std::abs(l2 - l3) <= FLT_EPSILON &&
+            std::abs(l3 - l4) <= FLT_EPSILON &&
+            std::abs(l4 - l1) <= FLT_EPSILON)
+            return true;
+    }
+ 
+    return false;
+}
+ 
+e_types get_typeof_shape(point_t a, point_t b, point_t c, point_t d) {
+ 
+    float a1 = get_angle(a, b, c);
+    float a2 = get_angle(b, c, d);
+    float a3 = get_angle(c, d, a);
+    float a4 = get_angle(d, a, b);
+ 
+    if (std::abs(a1 - 90.f) <= FLT_EPSILON &&
+        std::abs(a2 - 90.f) <= FLT_EPSILON &&
+        std::abs(a3 - 90.f) <= FLT_EPSILON &&
+        std::abs(a4 - 90.f) <= FLT_EPSILON) {
+ 
+        if (is_square(a, b, c, d))
+            return e_types::square;
+        else
+            return e_types::rect;
+    }
+    else {
+        float l1 = (a - b).length();
+        float l2 = (b - c).length();
+        float l3 = (c - d).length();
+        float l4 = (d - a).length();
+ 
+        if (std::abs(l1 - l3) <= FLT_EPSILON &&
+            std::abs(l2 - l4) <= FLT_EPSILON &&
+            std::abs(l1 - l2) > FLT_EPSILON &&
+            std::abs(l4 - l1) > FLT_EPSILON)
+            return e_types::rhombus;
+    }
+ 
+    return e_types::quad;
+}
+ 
+int main() {
+    std::vector<point_t> ptr(4);
+ 
+    //Выводит квадрат за место ромба
+    //Надо сделать трапецию
+ 
+    for (auto& i : ptr)
+        std::cin >> i.x >> i.y;
+ 
+    switch (get_typeof_shape(ptr[0], ptr[1], ptr[2], ptr[3]))
+    {
+    case e_types::quad:
+        std::cout << "quad" << std::endl;
+        break;
+    case e_types::rect:
+        std::cout << "rect" << std::endl;
+        break;
+    case e_types::rhombus:
+        std::cout << "rhombus" << std::endl;
+        break;
+    case e_types::square:
+        std::cout << "square" << std::endl;
+        break;
+    case e_types::trapezoid:
+        std::cout << "trapezoid" << std::endl;
+        break;
+    }
+}
