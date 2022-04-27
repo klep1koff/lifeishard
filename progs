@@ -353,7 +353,7 @@ float get_angle(point_t v1, point_t v2, point_t v3) {
     return degree;
 }
  
-enum class e_types {
+enum class e_types { \\перечисление
     rect,
     square,
     rhombus,
@@ -363,12 +363,12 @@ enum class e_types {
  
 bool is_square(point_t a, point_t b, point_t c, point_t d) {
  
-    float a1 = get_angle(a, b, c);
+    float a1 = get_angle(a, b, c); \\получение углов между точками
     float a2 = get_angle(b, c, d);
     float a3 = get_angle(c, d, a);
     float a4 = get_angle(d, a, b);
  
-    if (std::abs(a1 - 90.f) <= FLT_EPSILON &&
+    if (std::abs(a1 - 90.f) <= FLT_EPSILON && \\модуль, проверка на квадрат
         std::abs(a2 - 90.f) <= FLT_EPSILON &&
         std::abs(a3 - 90.f) <= FLT_EPSILON &&
         std::abs(a4 - 90.f) <= FLT_EPSILON) {
@@ -377,7 +377,7 @@ bool is_square(point_t a, point_t b, point_t c, point_t d) {
         float l2 = (b - c).length();
         float l3 = (c - d).length();
         float l4 = (d - a).length();
-        if (std::abs(l1 - l2) <= FLT_EPSILON &&
+        if (std::abs(l1 - l2) <= FLT_EPSILON && \\сравнение модуля с машинным нолем
             std::abs(l2 - l3) <= FLT_EPSILON &&
             std::abs(l3 - l4) <= FLT_EPSILON &&
             std::abs(l4 - l1) <= FLT_EPSILON)
