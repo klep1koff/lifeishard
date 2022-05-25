@@ -329,137 +329,95 @@ QT
 #include <string>
 #include <vector>
 using namespace std;
-
-#define PI 3.14159265358979323846
-#define DEG2RAD(x) ((float)(x) * (float)((float)(PI) / 180.0f))
-#define RAD2DEG(x) ((float)(x) * (float)(180.0f / (float)(PI)))
-
+ 
 struct point_t {
     int x, y;
     point_t operator-(point_t& other) {
         return point_t(other.x - x, other.y - y);
     }
-
+ 
     float length() const {
         return sqrt(x * x + y * y);
     }
-
 };
-
-//векторное произведение
-float cross(point_t lh, point_t rh)
-{
-    return lh.x * rh.y - lh.y * rh.x;
-}
-
-float get_angle(point_t v1, point_t v2, point_t v3) {
-    point_t a = v2 - v1, b = v2 - v3;
-    float ratio = a.x * b.x + a.y * b.y;
-    float degree = RAD2DEG(acos(ratio / (a.length() * b.length())));
-
-    return degree;
-}
-
+ 
 enum class e_types {
     rect,
     square,
     rhombus,
     trapezoid,
-    quad
+    same_shape,
+    parallelogram
 };
-
-
-bool is_trapezoid(point_t a, point_t b, point_t c, point_t d)
+ 
+int perimeter_calculation(point_t a, point_t b)
 {
-    const double s1 = cross(a - b, c - d);
-    const double s2 = cross(b - c, a - d);
-    return (s1 != s2 && (s1 == 0 || s2 == 0));
+    return ((a - b).length() * 4);
 }
-
-bool is_square(point_t a, point_t b, point_t c, point_t d) {
-
-    float a1 = get_angle(a, b, c);
-    float a2 = get_angle(b, c, d);
-    float a3 = get_angle(c, d, a);
-    float a4 = get_angle(d, a, b);
-
-    if (std::abs(a1 - 90.f) <= FLT_EPSILON &&
-        std::abs(a2 - 90.f) <= FLT_EPSILON &&
-        std::abs(a3 - 90.f) <= FLT_EPSILON &&
-        std::abs(a4 - 90.f) <= FLT_EPSILON) {
-
-        float l1 = (a - b).length();
-        float l2 = (b - c).length();
-        float l3 = (c - d).length();
-        float l4 = (d - a).length();
-        if (std::abs(l1 - l2) <= FLT_EPSILON &&
-            std::abs(l2 - l3) <= FLT_EPSILON &&
-            std::abs(l3 - l4) <= FLT_EPSILON &&
-            std::abs(l4 - l1) <= FLT_EPSILON)
-            return true;
-    }
-
-    return false;
-}
-
-e_types get_typeof_shape(point_t a, point_t b, point_t c, point_t d) {
-
-    float a1 = get_angle(a, b, c);
-    float a2 = get_angle(b, c, d);
-    float a3 = get_angle(c, d, a);
-    float a4 = get_angle(d, a, b);
-
-    if (is_trapezoid(a, b, c, d))
-        return e_types::trapezoid;
-
-    if (std::abs(a1 - 90.f) <= FLT_EPSILON &&
-        std::abs(a2 - 90.f) <= FLT_EPSILON &&
-        std::abs(a3 - 90.f) <= FLT_EPSILON &&
-        std::abs(a4 - 90.f) <= FLT_EPSILON) {
-
-        if (is_square(a, b, c, d))
-            return e_types::square;
+ 
+e_types get_typeof_shape( point_t a,  point_t b,  point_t c,  point_t d) {
+ 
+    int AB, BC,
+        CD, DA,
+        AC, BD;
+    AB = ((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+    BC = ((b.x - c.x) * (b.x - c.x) + (b.y - c.y) * (b.y - c.y));
+    CD = ((c.x - d.x) * (c.x - d.x) + (c.y - d.y) * (c.y - d.y));
+    DA = ((d.x - a.x) * (d.x - a.x) + (d.y - a.y) * (d.y - a.y));
+    AC = ((a.x - c.x) * (a.x - c.x) + (a.y - c.y) * (a.y - c.y));
+    BD = ((b.x - d.x) * (b.x - d.x) + (b.y - d.y) * (b.y - d.y));
+ 
+    if (AB == CD && BC == DA) {
+        if (AB == BC) {
+            if (AC == BD) {
+                return e_types::square;
+            }
+            else {
+                return e_types::rhombus;
+            }
+        }
         else
-            return e_types::rect;
+            if (AC == BD) {
+                return e_types::rect;
+            }
+            else {
+                return e_types::parallelogram;
+            }
     }
-    else {
-        float l1 = (a - b).length();
-        float l2 = (b - c).length();
-        float l3 = (c - d).length();
-        float l4 = (d - a).length();
-
-        if (std::abs(l1 - l3) <= FLT_EPSILON &&
-            std::abs(l2 - l4) <= FLT_EPSILON &&
-            std::abs(l1 - l2) > FLT_EPSILON &&
-            std::abs(l4 - l1) > FLT_EPSILON)
-            return e_types::rhombus;
-    }
-
-    return e_types::quad;
+    else
+ 
+    if (((a.x - b.x) * (c.y - d.y) == (a.y - b.y) * (c.x - d.x)) || ((a.x - d.x) * (b.y - c.y) == (a.y - d.y) * (b.x - c.x)))
+        return e_types::trapezoid;
+    else
+        return e_types::same_shape;
 }
-
+ 
 int main() {
     std::vector<point_t> ptr(4);
-
+ 
     for (auto& i : ptr)
         std::cin >> i.x >> i.y;
-
+ 
     switch (get_typeof_shape(ptr[0], ptr[1], ptr[2], ptr[3]))
     {
-    case e_types::quad:
-        std::cout << "quad" << std::endl;
+    case e_types::same_shape:
+        std::cout << "arbitrary quadrangle" << std::endl;
         break;
     case e_types::rect:
-        std::cout << "rect" << std::endl;
+        std::cout << "rect" << std::endl; //прямоугол
         break;
     case e_types::rhombus:
-        std::cout << "rhombus" << std::endl;
+        std::cout << "rhombus" << std::endl;//ромб
         break;
     case e_types::square:
         std::cout << "square" << std::endl;
+        std::cout << "The permeter is equal to" << perimeter_calculation(ptr[0], ptr[1]) << std::endl;
         break;
     case e_types::trapezoid:
-        std::cout << "trapezoid" << std::endl;
+        std::cout << "trapezoid" << std::endl;//трапеция
+        break;
+    case e_types::parallelogram:
+        std::cout << "parallelogram" << std::endl;//parallelogram
         break;
     }
 }
