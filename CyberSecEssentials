@@ -156,6 +156,137 @@ def encryptDecrypt(mode, message, key):
 print("Final message:",encryptDecrypt(cryptMode, startMessage, oneKey))
 
 
+one more variant of 4 laba
+
+# Виженер
+
+def form_dict():
+
+    '''
+    Словарь с позициями и значениями символов
+    '''
+
+    d = {}
+    for i in range(0,127):
+        d[i] = chr(i)
+
+    return d
+
+def encode_val(word):
+
+    '''
+    Позиционирование символов слова из словаря form_dict()
+    '''
+
+    list_code = []
+    d = form_dict()
+
+    for w in range(len(word)):
+        for value in d:
+            if word[w] == d[value]:
+                list_code.append(value) 
+    return list_code
+
+
+def comparator(value, key):
+
+    '''
+    Создание словаря соответствий позиций слова и позиций ключа
+    '''
+
+    dic = {}
+    item = 0
+    full = 0
+
+    for i in value:
+
+        dic[full] = [i,key[item]]
+        full += 1
+        item += 1
+
+        if (item >= len(key)):
+            item = 0
+
+    return dic 
+
+def full_encode(value, key):
+
+    '''
+    Создание списка с числами соответствующие позициям символов для шифровки текста 
+    '''
+
+    dic = comparator(value, key)
+    print('\nCompare full encode: ', dic)
+    lst = []
+    d = form_dict()
+
+    for v in dic:
+        go = (dic[v][0] + dic[v][1]) % len(d)
+        lst.append(go)
+
+    return lst
+
+def decode_val(list_in):
+    
+    '''
+    Заполнение списка символами из form_dict  соответствии с позициями списка из full_encode и full_decode
+    '''
+
+    list_code = []
+    d = form_dict() 
+
+    for i in range(len(list_in)):
+        for value in d:
+            if list_in[i] == value:
+               list_code.append(d[value])
+
+    return list_code
+
+def full_decode(value, key):
+
+    '''
+    Создание списка с числами соответствующие позициям символов для дешифровки текста
+    '''
+
+    dic = comparator(value, key)
+    print('\nCompare full decode: ', dic)
+    d = form_dict() 
+    lis =[]
+
+    for v in dic:
+        go = (dic[v][0]-dic[v][1]+len(d)) % len(d)
+        lis.append(go) 
+    return lis
+
+if __name__ == "__main__":
+
+    word = input("Input the text: ")
+    key = input("Input the key: ")
+    
+    print('\nWord: ' + word)
+    print('Key: ' + key)
+
+    # Шифрование
+    value_encoded = encode_val(word)
+    key_encoded = encode_val(key)
+ 
+    print('\nEncode value: ', value_encoded)
+    print('Encode key: ', key_encoded)
+
+    crypt = full_encode(value_encoded, key_encoded)
+    print('\nEncrypt: ', ''.join(decode_val(crypt)))
+
+
+    # Дешифрование
+    print("\nDecode value: ", crypt)
+    print("Decode key: ", key_encoded)
+
+    decoded = full_decode(crypt, key_encoded)
+    print('\nDecode list: ', decoded)
+
+    decode_word_list = decode_val(decoded)
+    print('\nDecrypt: ', ''.join(decode_word_list))
+
 5 лаба
 def decode(s:str, k:int=1):
     d = {x+1:'' for x in range(k)}
